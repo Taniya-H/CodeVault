@@ -1,0 +1,60 @@
+Javascript Async Code
+
+Javascript ---- > synchoronous                            Default
+        | 
+        | --------------> Single threaded
+
+
+Execution Context 
+Executes one line of code at a time 
+   |
+   |-> console log - 1                                                     each operation waits for the last one to complete before executing 
+   |-> console log 2                                                                                                                   
+   |          
+
+Calll Stack            Memory Heap 
+
+
+------------------------------------------------------------------------
+            Blocking code              |           Non Blocking Code
+-------------------------------------------------------------------------
+ Block the flow of the              | Does not block execution
+progression                               |
+                                                    |
+Read file sync                           | Read File Async 
+                                    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

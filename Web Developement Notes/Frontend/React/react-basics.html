@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <title>React Basics</title>
+    </head>
+    <body>
+        <!-- This empty div is where React will inject/render everything.
+        React doesn't touch the rest of the page — only this container. -->
+        <div class="js-container"></div>
+
+        <!-- Core React library — the logic for building components, state, JSX,
+        and more. Knows nothing about the browser DOM by itself. -->
+        <script src="https://unpkg.com/supersimpledev/react.js"></script>
+
+        <!-- ReactDOM — the "renderer" that takes what React built and actually
+        puts it into the browser's DOM. -->
+        <script src="https://unpkg.com/supersimpledev/react-dom.js"></script>
+
+        <!-- Babel — compiles JSX (and modern JS) into plain JS the browser can run.
+        Required since browsers can't read JSX natively. -->
+        <script src="https://unpkg.com/supersimpledev/babel.js"></script>
+
+        <script src="https://unpkg.com/supersimpledev/dayjs.js"></script>
+
+        <!-- type="text/babel" tells Babel: "compile this script block before
+        running it". Without this, the browser would try to run raw JSX and
+        throw a syntax error. -->
+        <script type="text/babel">
+            // JSX: looks like HTML but is actually JavaScript.
+            // Babel compiles this into React.createElement(...) calls behind the scenes.
+            const button = <button>good job!</button>;
+            const paragraph = <p>My name is Taniya.</p >
+            const product_cost = (1*10 ) + (2 * 8)
+            const shipping_price = 5
+            const day = dayjs().format(' MMMM D ')
+            const time = dayjs().format('HH:mm:ss')
+
+            const div =( 
+                <div>
+                    <p>Cotton Socks</p>
+                    <p>Price: ${product_cost}</p> 
+                    <button>Cotton Socks</button>
+                </div>
+            );
+
+            const div2 = (
+                <div>
+                    <p>Current Date And Month: {day}</p>
+                    <p>Current Time: {time}</p>
+                    <p>Production Price: ${product_cost}</p>
+                    <p>Shipping Price: ${shipping_price}</p>
+                    <p>Total Price: ${product_cost + shipping_price}</p>
+                </div>
+            )
+
+            // Grab the actual DOM element (the empty div from above) so React knows where on the page to render into.
+            const container = document.querySelector(".js-container");
+
+
+            // createRoot(container) tells React "this DOM node is your entry point".
+            // .render(...) then draws content into it.
+            // Note: here a plain string is rendered instead of `button` —
+            // React will just display it as text.
+            ReactDOM.createRoot(container).render(div);
+            ReactDOM.createRoot(container).render(div2)
+            console.log(product_cost);
+            console.log(time);
+
+            const root = ReactDOM.createRoot(container)
+            root.render(<div>Current time: {time}</div>)
+            setInterval(() => {
+                root.render(<div>Current time: {dayjs().format('HH:mm:ss')}</div>)
+            }, 1000);
+            
+
+        </script>
+    </body>
+</html>

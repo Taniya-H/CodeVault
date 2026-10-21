@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Chai aur code</h1>
+    <button id="stop">Stop</button>
+</body>
+<script>
+    // setTimeout(function () {  // setTimeOut also calls api , does a work after a interval
+    //     console.log("Taniya");
+    // }, 2000)
+
+    // const sayTaniya = function () {
+    //     console.log("Taniya");
+    // }
+    // setTimeout(sayTaniya, 2000)
+    const changeText = function () {
+        document.querySelector('h1').innerHTML = "Best JS Series ever"
+    }
+    const changeMe = setTimeout(changeText, 2000)
+
+    // setTimeout() returns a timeout ID.
+    // clearTimeout() needs that ID as the reference.
+
+    document.querySelector('#stop').addEventListener('click', function(){
+        clearTimeout(changeMe)
+        console.log("STOPPED");
+    })
+
+
+</script>
+</html>

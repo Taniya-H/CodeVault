@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <title>Chatbot</title>
+    </head>
+    <body>
+        <div class="js-container"></div>
+
+        <script src="https://unpkg.com/supersimpledev/react.js"></script>
+        <script src="https://unpkg.com/supersimpledev/react-dom.js"></script>
+        <script src="https://unpkg.com/supersimpledev/babel.js"></script>
+
+        <script type="text/babel">
+            function chatInput(){
+                return (
+                    <>
+                        <input  placeholder = "Send a message to Chatbot" size = "30"></input> 
+                        {/* Or can use <input /> (Known as self-closing element.) */}
+                        <button>Send</button>
+                    </>
+                );
+            }
+
+            function ChatMessage(){
+                return (
+                    <div>
+                        Hello Chatbot
+                        <img src="assets/user.png" width="50" />
+                    </div>
+                )
+            }
+            const app = ( 
+                <>
+                    {chatInput()}
+                    {/* Or can use <chatInput></chatInput> which is also a HTML element.*/}
+                    <ChatMessage />
+                </>
+            );
+
+            // Grab the actual DOM element (the empty div from above) so React knows where on the page to render into.
+            const container = document.querySelector(".js-container");
+
+            ReactDOM.createRoot(container).render(app);
+
+        </script>
+    </body>
+</html>

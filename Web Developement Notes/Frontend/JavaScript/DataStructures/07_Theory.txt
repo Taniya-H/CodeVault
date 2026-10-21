@@ -1,0 +1,108 @@
+*********************************** JAVASCRIPT EXECUTION CONTEXT ************************************
+JavaScript runs code using something called:
+Execution Context
+Think of it as:
+“The environment where JavaScript executes code.”
+
+Types of Execution Context
+1. Global Execution Context (GEC)
+This is created when the JS program starts.
+created first
+stored in call stack
+this refers to:
+window in browser
+{} / module object in Node
+
+2. Function Execution Context (FEC)
+Whenever a function is called,
+JS creates a new execution context for that function.
+Each function gets:
+its own memory
+its own variables
+its own execution thread
+
+Calling add() creates a new Function Execution Context.
+
+3. Eval Execution Context
+Created inside:
+eval()
+Rarely used.
+Mostly ignored in modern JS because:
+unsafe
+slow
+bad practice
+
+
+Two Phases of Execution Context
+Every execution context has TWO phases.
+1. Memory Creation Phase (Memory Allocation Phase)
+JS scans the code BEFORE executing.
+It allocates memory for:
+
+variables
+functions
+What Happens?
+Variables
+
+Stored as:
+undefined
+Functions
+
+Entire function definition stored in memory.
+Example
+var val1 = 10
+var val2 = 5
+
+function addNum(num1, num2){
+    return num1 + num2
+}
+
+During Memory Phase:
+
+val1 -> undefined
+val2 -> undefined
+addNum -> function definition
+
+No execution yet.
+Only memory setup.
+
+2. Execution Phase
+Now JS executes code line by line.
+What Happens?
+Variables get actual values
+val1 = 10
+val2 = 5
+Function calls create new execution contexts
+addNum(10,5)
+creates:
+new Function Execution Context
+
+GLOBAL EXECUTION CONTEXT CREATED
+            ↓
+  MEMORY CREATION PHASE
+  (variables → undefined,
+  functions → definitions)
+            ↓
+    EXECUTION PHASE
+    (assign values)
+            ↓
+    FUNCTION CALL
+            ↓
+NEW FUNCTION EXECUTION CONTEXT
+            ↓
+FUNCTION MEMORY PHASE
+            ↓
+FUNCTION EXECUTION PHASE
+            ↓
+    RETURN VALUE
+            ↓
+FUNCTION CONTEXT REMOVED
+
+CALL STACK - LIFO - LAST IN FIRST OUT 
+-FIFO - FIRST IN FIRST OUT 
+
+
+
+
+
+

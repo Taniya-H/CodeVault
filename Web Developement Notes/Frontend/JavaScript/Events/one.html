@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTML Events</title>
+</head>
+<body style = "background-color: black; color: aliceblue;" >
+    <h2>Image Gallery</h2>
+    <div>
+        <ul id="images" >
+            <li><img width="200" id="photoshop" src="./img/photoshop.png" alt="Photoshop"></li>
+            <li><img width="200" id="Japan" src="./img/Japan.jpg" alt="Japan"></li>
+            <li><img width="200" id="river" src="./img/river.png" alt="River"></li>
+            <li><img width="200" id="owl" src="./img/Owl.png" alt="Owl"></li>
+            <li><img width="200" id="prayer" src="./img/Prayer.png" alt="Prayer"></li>
+            <li><a style = "color: aliceblue;" href="https://google.com" id="google">Google</a></li>
+        </ul>
+    </div>
+</body>
+<script>
+    // document.getElementById('owl').onclick = function(){
+    //     alert("owl clicked") // bad approach as it dosent provides much info . should use event listner as it not only gives the functionality of onclick but also gives ability of propagation
+    // }
+
+    // document.getElementById('owl').addEventListener('click', function(){
+    //     alert("Owl clicked again")
+    // }, false)
+    // attachEvent() -- used for the internet explorer view 
+    // jQuery - on
+
+    // document.getElementById('Japan').addEventListener('click', function(e){console.log(e);}) // e -- event object
+    // type , timestamp, defaultPrevented , 
+    // target, toElement, srcElement, currentElement
+    // target, toElement, srcElement, currentTarget,
+    // clientX, clientY, screenX, screenY
+    // altkey, ctrlkey, shiftkey, keycode
+
+    // Event propagation: the event first travels in the capturing phase (top to bottom), then reaches the target, and finally goes back up in the bubbling phase (bottom to top). In addEventListener, true = capturing and false = bubbling (default).
+    // Event propagation has two main phases: capturing (top to bottom) and bubbling (bottom to top). true = capture, false = bubble.
+
+//     document.getElementById('images').addEventListener('clicked', function(e){
+//         console.log("clicked inside the ul.");
+//     }, false)
+
+// document.getElementById('owl').addEventListener('click', function(e){
+//     console.log("owl clicked.");
+//     e.stopPropagation()
+// }, true)
+
+// document.getElementById('google').addEventListener('click', function(e){
+//     e.preventDefault()
+//     e.stopPropagation() // Stops bubbling
+//     console.log("Google clicked");
+// }, false)
+
+document.querySelector('#images').addEventListener('click', function(e){
+    console.log(e.target.parentNode);
+    console.log(e.target.tagName);
+    if (e.target.tagName === 'IMG') {
+        console.log(e.target.id);
+       let removeIt = e.target.parentNode
+        removeIt.remove() 
+    }
+
+    // e.preventDefault()
+// removes the element from the webpage
+    // removeIt.parentNode.removeChild(removeIt)
+})
+
+
+
+
+
+
+</script>
+</html>
